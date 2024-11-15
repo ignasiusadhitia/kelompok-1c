@@ -18,7 +18,8 @@ import WhatWeDoDashboardPage from './pages/WhatWeDoDashboardPage';
 
 const App = () => {
   return (
-    <Router>
+    // To minimize risk of breaking changes, and future updates on react-router-dom v7
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route element={<LoginPage />} path="/" />
         <Route element={<RegisterPage />} path="/register" />
