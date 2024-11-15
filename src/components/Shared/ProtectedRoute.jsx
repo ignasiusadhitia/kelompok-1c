@@ -7,7 +7,7 @@ const ProtectedRoute = () => {
   const role = localStorage.getItem('role');
 
   if (!token || role !== 'admin') {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return <Outlet />;
