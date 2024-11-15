@@ -1,7 +1,9 @@
 import React from 'react';
 
+import RegisterForm from 'components/Auth/RegisterForm';
+
 const RegisterContainer = () => {
-  return <div>RegisterContainer</div>;
+  return <RegisterForm />;
 };
 
 export default RegisterContainer;
