@@ -1,3 +1,4 @@
+```
 src/
 ├── api/ # Folder untuk API dan konfigurasi
 │ ├── services/ # Folder untuk layanan API individual
@@ -101,3 +102,4 @@ src/
 ├── App.js # Entry point aplikasi
 ├── index.js # File utama untuk merender aplikasi
 └── .env # File konfigurasi environment
+```
