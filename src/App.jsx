@@ -16,6 +16,8 @@ import TeamDashboardPage from 'pages/TeamDashboardPage';
 import TestimonialDashboardPage from 'pages/TestimonialDashboardPage';
 import WhatWeDoDashboardPage from 'pages/WhatWeDoDashboardPage';
 
+import DashboardLayout from './layouts/DashboardLayout';
+
 const App = () => {
   return (
     // To minimize risk of breaking changes, and future updates on react-router-dom v7
@@ -24,16 +26,39 @@ const App = () => {
         <Route element={<LoginPage />} path="/" />
         <Route element={<RegisterPage />} path="/register" />
         <Route element={<ProtectedRoute />}>
-          <Route element={<DashboardPage />} path="/dashboard" />
-          <Route element={<AboutUsDashboardPage />} path="/about-us" />
-          <Route element={<ArticleDasboardPage />} path="/articles" />
-          <Route element={<ContactDasboardPage />} path="/contact" />
-          <Route element={<ExpertiseDashboardPage />} path="/expertise" />
-          <Route element={<PortfolioDashboardPage />} path="/portfolio" />
-          <Route element={<SubscribeDashboardPage />} path="/subscribe" />
-          <Route element={<TeamDashboardPage />} path="/team" />
-          <Route element={<TestimonialDashboardPage />} path="/testimonials" />
-          <Route element={<WhatWeDoDashboardPage />} path="/testimonials" />
+          <Route
+            element={
+              <DashboardLayout path="/dashboard/*">
+                <Routes>
+                  <Route element={<DashboardPage />} path="" />
+                  <Route element={<AboutUsDashboardPage />} path="/about-us" />
+                  <Route element={<ArticleDasboardPage />} path="/articles" />
+                  <Route element={<ContactDasboardPage />} path="/contact" />
+                  <Route
+                    element={<ExpertiseDashboardPage />}
+                    path="/expertise"
+                  />
+                  <Route
+                    element={<PortfolioDashboardPage />}
+                    path="/portfolio"
+                  />
+                  <Route
+                    element={<SubscribeDashboardPage />}
+                    path="/subscribe"
+                  />
+                  <Route element={<TeamDashboardPage />} path="/team" />
+                  <Route
+                    element={<TestimonialDashboardPage />}
+                    path="/testimonials"
+                  />
+                  <Route
+                    element={<WhatWeDoDashboardPage />}
+                    path="/testimonials"
+                  />
+                </Routes>
+              </DashboardLayout>
+            }
+          />
         </Route>
         <Route element={<LoginPage />} path="*" />
       </Routes>
