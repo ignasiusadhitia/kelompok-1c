@@ -1,5 +1,5 @@
 import React from 'react';
-import PortfolioContainer from '../../containers/Portfolio/PortfolioContainer';
+import PortfolioContainer from 'containers/Portfolio/PortfolioContainer';
 
 const PortfolioPage = () => {
   return <PortfolioContainer />;
