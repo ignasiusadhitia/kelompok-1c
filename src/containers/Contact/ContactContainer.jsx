@@ -1,7 +1,13 @@
 import React from 'react';
 
+import ContactList from 'components/Contact/ContactList';
+
 const ContactContainer = () => {
-  return <div>ContactContainer</div>;
+  return (
+    <>
+      <ContactList />
+    </>
+  );
 };
 
 export default ContactContainer;
