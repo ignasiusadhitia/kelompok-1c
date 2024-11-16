@@ -6,7 +6,7 @@ const EditPortfolioFormPage = () => {
   const location = useLocation();
   const portfolio = location.state;
 
-  return <PortfolioForm isEdit={true} portfolio={portfolio} />;
+  return <PortfolioForm isEdit portfolio={portfolio} />;
 };
 
 export default EditPortfolioFormPage;
