@@ -50,7 +50,7 @@ const ContactDetail = ({ contact, onClose }) => {
                 Phone Number
               </dt>
               <dd className="mb-4 text-gray-500 dark:text-gray-400">
-                {contact.phoneNumber}
+                {contact.phone}
               </dd>
               <dt className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Message

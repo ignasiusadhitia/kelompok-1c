@@ -17,7 +17,8 @@ const ContactList = () => {
   };
 
   if (loading) return <p>Loading contacts...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return
+  <p>Error: {error}</p>;
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -30,11 +31,27 @@ const ContactList = () => {
                   Search
                 </label>
                 <div className="relative w-full">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg
+                      aria-hidden="true"
+                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                   <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pr-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    id="simple-search"
-                    placeholder="Search"
                     type="text"
+                    id="simple-search"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Search"
+                    required=""
                   />
                 </div>
               </form>
@@ -58,9 +75,9 @@ const ContactList = () => {
                       {contact.name}
                     </td>
                     <td className="px-4 py-3">{contact.email}</td>
-                    <td className="px-4 py-3">{contact.phoneNumber}</td>
+                    <td className="px-4 py-3">{contact.phone}</td>
                     <td className="px-4 py-3">{contact.message}</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
+                    <td className="px-4 py-3 flex items-center justify-center">
                       <button
                         className="inline-flex items-center p-0.5 text-sm font-medium text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                         type="button"
