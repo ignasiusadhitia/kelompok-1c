@@ -16,8 +16,8 @@ const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
             <th className="px-4 py-3" scope="col">
               Description
             </th>
-            <th className="px-4 py-3" scope="col">
-              <span className="sr-only">Actions</span>
+            <th className="px-4 py-3 text-center" scope="col">
+              Actions
             </th>
           </tr>
         </thead>

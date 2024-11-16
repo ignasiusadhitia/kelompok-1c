@@ -30,7 +30,7 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
       <td className="px-4 py-3">{portfolio.date}</td>
       <td className="px-4 py-3">{portfolio.title}</td>
       <td className="px-4 py-3">{portfolio.content}</td>
-      <td className="px-4 py-3 flex items-center justify-end">
+      <td className="px-4 py-3 flex items-center justify-center">
         <button
           className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
           onBlur={() => setIsOpen(false)}
