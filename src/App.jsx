@@ -20,46 +20,53 @@ import DashboardLayout from './layouts/DashboardLayout';
 
 const App = () => {
   return (
-    // To minimize risk of breaking changes, and future updates on react-router-dom v7
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router>
       <Routes>
+        {/* Public Routes */}
         <Route element={<LoginPage />} path="/" />
         <Route element={<RegisterPage />} path="/register" />
+
+        {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
-          <Route
-            element={
-              <DashboardLayout path="/dashboard/*">
-                <Routes>
-                  <Route element={<DashboardPage />} path="" />
-                  <Route element={<AboutUsDashboardPage />} path="/about-us" />
-                  <Route element={<ArticleDasboardPage />} path="/articles" />
-                  <Route element={<ContactDasboardPage />} path="/contact" />
-                  <Route
-                    element={<ExpertiseDashboardPage />}
-                    path="/expertise"
-                  />
-                  <Route
-                    element={<PortfolioDashboardPage />}
-                    path="/portfolio"
-                  />
-                  <Route
-                    element={<SubscribeDashboardPage />}
-                    path="/subscribe"
-                  />
-                  <Route element={<TeamDashboardPage />} path="/team" />
-                  <Route
-                    element={<TestimonialDashboardPage />}
-                    path="/testimonials"
-                  />
-                  <Route
-                    element={<WhatWeDoDashboardPage />}
-                    path="/testimonials"
-                  />
-                </Routes>
-              </DashboardLayout>
-            }
-          />
+          <Route element={<DashboardLayout />}>
+            <Route element={<DashboardPage />} path="/dashboard" />
+            <Route
+              element={<AboutUsDashboardPage />}
+              path="/dashboard/about-us"
+            />
+            <Route
+              element={<ArticleDasboardPage />}
+              path="/dashboard/articles"
+            />
+            <Route
+              element={<ContactDasboardPage />}
+              path="/dashboard/contact"
+            />
+            <Route
+              element={<ExpertiseDashboardPage />}
+              path="/dashboard/expertise"
+            />
+            <Route
+              element={<PortfolioDashboardPage />}
+              path="/dashboard/portfolio"
+            />
+            <Route
+              element={<SubscribeDashboardPage />}
+              path="/dashboard/subscribe"
+            />
+            <Route element={<TeamDashboardPage />} path="/dashboard/team" />
+            <Route
+              element={<TestimonialDashboardPage />}
+              path="/dashboard/testimonials"
+            />
+            <Route
+              element={<WhatWeDoDashboardPage />}
+              path="/dashboard/what-we-do"
+            />
+          </Route>
         </Route>
+
+        {/* Fallback */}
         <Route element={<LoginPage />} path="*" />
       </Routes>
     </Router>

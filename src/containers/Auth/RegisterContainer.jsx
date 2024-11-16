@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import RegisterForm from 'components/Auth/RegisterForm';
 import useAuth from 'hooks/useAuth';
 
@@ -13,6 +15,8 @@ const RegisterContainer = () => {
   });
   const [successMessage, setSuccessMessage] = useState('');
 
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -24,6 +28,7 @@ const RegisterContainer = () => {
     if (response) {
       setSuccessMessage(response.message);
       setFormData({ name: '', username: '', password: '', role: 'admin' });
+      navigate('/');
     }
   };
   return (
