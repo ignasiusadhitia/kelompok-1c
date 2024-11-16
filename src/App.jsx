@@ -27,7 +27,7 @@ import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
 
 const App = () => {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         {/* Public Routes */}
         <Route element={<LoginPage />} path="/" />
