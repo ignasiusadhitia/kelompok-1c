@@ -20,13 +20,13 @@ import ArticleFormPage from './pages/ArticleFormPage';
 import ArticlePage from './pages/ArticlePage';
 import ContactPage from './pages/ContactPage';
 import ExpertiseFormPage from './pages/ExpertiseFormPage';
-import AddPortfolioFormPage from './pages/Portfolio/AddPortfolioFormPage';
-import EditPortfolioFormPage from './pages/Portfolio/EditPortfolioFormPage';
+import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
+import EditPortfolioFormPage from 'pages/Portfolio/EditPortfolioFormPage';
 import TeamFormPage from './pages/TeamFormPage';
 import TestimonialFormPage from './pages/TestimonialFormPage';
 import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
 
-import PortfolioDetailPage from './pages/Portfolio/PortfolioDetailPage';
+import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
 
 const App = () => {
   return (

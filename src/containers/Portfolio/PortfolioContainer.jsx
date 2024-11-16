@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PortfolioList from '../../components/Portfolio/PortfolioList';
-import useFetchData from '../../hooks/useFetchData';
+import PortfolioList from 'components/Portfolio/PortfolioList';
+import useFetchData from 'hooks/useFetchData';
 
 const PortfolioContainer = () => {
 
