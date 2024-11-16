@@ -1,7 +1,12 @@
 import React from 'react';
+import SubscribeContainer from '../containers/Subscribe/SubscribeContainer';
 
 const SubscribeDashboardPage = () => {
-  return <div>SubscribeDashboardPage</div>;
+  return (
+    <>
+      <SubscribeContainer />;
+    </>
+  );
 };
 
 export default SubscribeDashboardPage;
