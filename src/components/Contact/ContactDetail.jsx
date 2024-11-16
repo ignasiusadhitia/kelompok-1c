@@ -1,21 +1,18 @@
 import React from 'react';
 
-const ContactDetail = ({ onClose }) => {
-  console.log('Prop onClose diterima: ', onClose);
+const ContactDetail = ({ contact, onClose }) => {
+  if (!contact) return null;
+
   return (
-    <div
-      aria-hidden="true"
-      className="fixed top-0 right-0 left-0 z-50 w-full h-screen flex items-center justify-center bg-gray-900 bg-opacity-50"
-    >
-      <div className="relative p-4 w-full max-w-2xl md:h-auto mx-auto z-60">
-        {/* Modal content */}
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-800 z-70">
+    <div className="fixed top-0 right-0 left-0 z-50 w-full h-screen flex items-center justify-center bg-gray-900 bg-opacity-50">
+      <div className="relative p-4 w-full max-w-2xl md:h-auto mx-auto">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-800">
           <div className="pt-3 pb-3 flex items-center justify-between border-b rounded-t dark:border-gray-600 ps-2 pe-2">
-            <h3 className=" text-lg font-normal text-gray-500 dark:text-gray-400 items-center">
+            <h3 className="text-lg font-normal text-gray-500 dark:text-gray-400">
               Contact Details
             </h3>
             <button
-              className=" text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
+              className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
               type="button"
               onClick={onClose}
             >
@@ -37,32 +34,29 @@ const ContactDetail = ({ onClose }) => {
           </div>
           <div className="p-6 pt-2">
             <dl>
-              <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+              <dt className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Name
               </dt>
-              <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                namee
+              <dd className="mb-4 text-gray-500 dark:text-gray-400">
+                {contact.name}
               </dd>
-              <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+              <dt className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Email
               </dt>
-              <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                asdasdasd@email.com
+              <dd className="mb-4 text-gray-500 dark:text-gray-400">
+                {contact.email}
               </dd>
-              <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+              <dt className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Phone Number
               </dt>
-              <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                2313123123123123
+              <dd className="mb-4 text-gray-500 dark:text-gray-400">
+                {contact.phoneNumber}
               </dd>
-              <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+              <dt className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Message
               </dt>
-              <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Exercitationem nemo unde dicta hic delectus, eligendi
-                voluptatum! Consequuntur nam iste sit aliquid magni voluptatem
-                facere earum! Excepturi sequi rerum dolores id?
+              <dd className="mb-4 text-gray-500 dark:text-gray-400">
+                {contact.message}
               </dd>
             </dl>
           </div>
