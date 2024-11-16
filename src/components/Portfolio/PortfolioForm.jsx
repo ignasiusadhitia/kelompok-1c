@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import useAddData from '../../hooks/useAddData';
+import useUpdateData from '../../hooks/useUpdateData';
 
 const PortfolioForm = ({ isEdit, portfolio }) => {
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     image: '',
     title: isEdit ? portfolio.title : '',
@@ -22,9 +21,14 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
       [name]: name === 'image' ? files[0] : value,
     }));
   };
+ 
+  // use custom hooks for add data
+  const { addData, loading: addLoading } = useAddData('/api/portfolio');
 
-  // handle add data or edit data
-  const handleFormSubmit = async (e, method, url) => {
+  //use custom hooks for edit data
+  const { updateData, loading: updateLoading } = useUpdateData(`/api/portfolio/${portfolio.id}`);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!isEdit && !formData.image) {
@@ -32,56 +36,21 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
       return;
     }
 
-    setLoading(true);
-    setError(null);
-
     const data = new FormData();
     data.append('image', formData.image);
     data.append('title', formData.title);
     data.append('date', formData.date);
     data.append('content', formData.content);
 
-    try {
-      const response = await axios({
-        method,
-        url,
-        data,
-        headers: {
-          authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
-          'Content-Type': 'multipart/form-data',
-        },
+    if (isEdit) {
+      updateData(data, () => {
+        navigate('/dashboard/portfolio');
       });
-
-      console.log('Portfolio operation successful:', response);
-
-      // Redirect to portfolio page
-      navigate('/portfolio');
-
-      // Reset form
-      setFormData({
-        image: '',
-        title: '',
-        date: '',
-        content: '',
+    } else {
+      addData(data, () => {
+        navigate('/dashboard/portfolio');
       });
-    } catch (error) {
-      setError(
-        error.response?.data?.message || error.message || 'Something went wrong'
-      );
-      console.error('Error during portfolio operation:', error);
-    } finally {
-      setLoading(false);
     }
-  };
-
-  // handle form submit
-  const handleSubmit = (e) => {
-    const url = isEdit
-      ? `${import.meta.env.VITE_API_BASE_URL}/api/portfolio/${portfolio.id}`
-      : `${import.meta.env.VITE_API_BASE_URL}/api/portfolio`;
-
-    const method = isEdit ? 'put' : 'post';
-    handleFormSubmit(e, method, url);
   };
 
   return (
@@ -163,7 +132,7 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
           </div>
           <div className="flex justify-end">
             <button
-              onClick={() => navigate('/portfolio')}
+              onClick={() => navigate(-1)}
               className="mt-4 flex items-center justify-center px-5 py-2.5 mt-4 text-sm font-medium text-red-600 border-2 border-red-600 mr-2 rounded-lg hover:bg-red-700 hover:text-white"
             >
               Cancel
@@ -171,13 +140,13 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
             <button
               type="submit"
               className={`flex items-center justify-center px-5 py-2.5 mt-4 text-sm font-medium text-white rounded-lg ${
-                loading
+                addLoading || updateLoading
                   ? 'bg-blue-400 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700'
               }`}
-              disabled={loading}
+              disabled={addLoading || updateLoading}
             >
-              {loading ? (
+              {addLoading || updateLoading ? (
                 <div className="flex items-center">
                   <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
                   Loading...
@@ -194,8 +163,3 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
 };
 
 export default PortfolioForm;
-
-PortfolioForm.propTypes = {
-  portfolio: PropTypes.object.isRequired,
-  isEdit: PropTypes.bool.isRequired,
-};

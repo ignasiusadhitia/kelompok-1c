@@ -1,47 +1,28 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import useDeleteData from '../../hooks/useDeleteData';
 
 const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigationToDetail = () => {
-    navigate(`/portfolio/${portfolio.id}`, {
+    navigate(`/dashboard/portfolio/${portfolio.id}`, {
       state: portfolio,
     });
   };
   
   const handleNavigationToEdit = () => {
-    navigate(`/portfolio/edit-data/${portfolio.id}`, {
+    navigate(`/dashboard/portfolio/edit/${portfolio.id}`, {
       state: portfolio,
     });
   };
 
   // delete data
-  const handleDelete = async (id) => {
-    setLoading(true);
+  const { deleteData, loading } = useDeleteData();
 
-    try {
-      const response = await axios.delete(
-        `${import.meta.env.VITE_API_BASE_URL}/api/portfolio/${id}`,
-        {
-          headers: {
-            authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
-            'Access-Control-Allow-Origin': '*',
-          },
-        }
-      );
-      // console.log(response.data);
-      fetchPortfolios();
-    } catch (error) {
-      alert("Something went wrong")
-      console.log(error);
-    } finally {
-      setLoading(false)
-    }
+  const handleDelete = (id) => {
+    deleteData(`/api/portfolio/${id}`, fetchPortfolios)
   };
 
   return (
@@ -110,10 +91,4 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
 };
 
 export default PortfolioListItem;
-
-PortfolioListItem.propTypes = {
-  portfolio: PropTypes.object.isRequired,
-  fetchPortfolios: PropTypes.func.isRequired,
-};
-
 

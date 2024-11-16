@@ -1,8 +1,8 @@
 import React from 'react';
 import PortfolioForm from '../../components/Portfolio/PortfolioForm';
 
-const AddPortfolioContainer = () => {
+const EditPortfolioFormPage = () => {
   return <PortfolioForm isEdit={false} portfolio={{}}/>;
 };
 
-export default AddPortfolioContainer;
+export default EditPortfolioFormPage;

@@ -11,7 +11,7 @@ const PortfolioDetail = () => {
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div className="mx-auto max-w-5xl">
           <button
-            className="bg-blue-500 p-2 rounded-lg font-bold text-white hover:bg-blue-700"
+            className="border-2 border-rose-500 text-rose-500 hover:text-white hover:bg-rose-500 p-2 rounded-lg font-bold"
             onClick={() => navigate(-1)}
           >
             Back
