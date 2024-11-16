@@ -40,12 +40,12 @@ const PortfolioContainer = () => {
               </Link>
             </div>
           </div>
-          <PortfolioList
+          {/* <PortfolioList
             portfolios={portfolios}
             loading={loading}
             error={error}
             fetchPortfolios={fetchPortfolios}
-          />
+          /> */}
         </div>
       </div>
     </section>

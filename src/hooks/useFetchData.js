@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = import.meta.env.VITE_BASE_URL;
 const authToken = localStorage.getItem('token');
 
 const useFetchData = (url) => {
@@ -19,6 +19,7 @@ const useFetchData = (url) => {
         },
       });
       setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       setError(error.message || 'Something went wrong');
     } finally {

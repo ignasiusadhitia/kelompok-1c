@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useAddData from '../../hooks/useAddData';
 import useUpdateData from '../../hooks/useUpdateData';
