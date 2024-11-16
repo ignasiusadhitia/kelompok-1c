@@ -3,14 +3,109 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Navigation = ({ onLogout }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isDropdownPagesOpen, setIsDropdownPagesOpen] = useState(false);
-  const [isDropdownSalesOpen, setIsDropdownSalesOpen] = useState(false);
+const Navigation = ({ isSidebarOpen, toggleSidebar, onLogout }) => {
+  const [dropdowns, setDropdowns] = useState({});
 
-  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
-  const toggleDropdownPages = () => setIsDropdownPagesOpen((prev) => !prev);
-  const toggleDropdownSales = () => setIsDropdownSalesOpen((prev) => !prev);
+  const toggleDropdown = (key) => {
+    setDropdowns((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  const menuItems = [
+    {
+      title: 'Overview',
+      path: '/dashboard',
+      key: 'overview',
+      hasSubMenu: false,
+    },
+    {
+      title: 'About Us',
+      path: '/dashboard/about-us',
+      key: 'aboutUs',
+      hasSubMenu: false,
+    },
+    {
+      title: 'Articles',
+      path: '/dashboard/articles',
+      key: 'articles',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+    {
+      title: 'Contact',
+      path: '/dashboard/contact',
+      key: 'contact',
+      hasSubMenu: false,
+    },
+    {
+      title: 'Expertise',
+      path: '/dashboard/expertise',
+      key: 'expertise',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+    {
+      title: 'Portfolio',
+      path: '/dashboard/portfolio',
+      key: 'portfolio',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+    {
+      title: 'Subscribe',
+      path: '/dashboard/subscribe',
+      key: 'subscribe',
+      hasSubMenu: false,
+    },
+    {
+      title: 'Team',
+      path: '/dashboard/team',
+      key: 'team',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+    {
+      title: 'Testimonials',
+      path: '/dashboard/testimonials',
+      key: 'testimonials',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+    {
+      title: 'What We Do',
+      path: '/dashboard/what-we-do',
+      key: 'whatWeDo',
+      hasSubMenu: true,
+      subMenu: ['list', 'add'],
+    },
+  ];
+
+  const renderSubMenu = (basePath, subMenu) => (
+    <ul className="py-2 space-y-2">
+      {subMenu.includes('list') && (
+        <li>
+          <Link
+            className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+            to={`${basePath}`}
+          >
+            List
+          </Link>
+        </li>
+      )}
+      {subMenu.includes('add') && (
+        <li>
+          <Link
+            className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+            to={`${basePath}/add`}
+          >
+            Add
+          </Link>
+        </li>
+      )}
+    </ul>
+  );
 
   return (
     <>
@@ -87,150 +182,48 @@ const Navigation = ({ onLogout }) => {
         >
           <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
             <ul className="space-y-2">
-              <li>
-                <Link
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                  to="/dashboard"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                  </svg>
-                  <span className="ml-3">Overview</span>
-                </Link>
-              </li>
-              <li>
-                <button
-                  aria-controls="dropdown-pages"
-                  className="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  data-collapse-toggle="dropdown-pages"
-                  type="button"
-                  onClick={toggleDropdownPages}
-                >
-                  {/* svg icon */}
-                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
-                    About Us
-                  </span>
-                  <svg
-                    aria-hidden="true"
-                    className={`w-6 h-6 transition-transform ${
-                      isDropdownPagesOpen ? 'rotate-180' : ''
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clipRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      fillRule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-                {isDropdownPagesOpen && (
-                  <ul className="py-2 space-y-2" id="dropdown-pages">
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
+              {menuItems.map((item) => (
+                <li key={item.key}>
+                  {!item.hasSubMenu ? (
+                    <Link
+                      className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      to={item.path}
+                    >
+                      {item.title}
+                    </Link>
+                  ) : (
+                    <>
+                      <button
+                        aria-controls={`dropdown-${item.key}`}
+                        className="flex items-center py-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        type="button"
+                        onClick={() => toggleDropdown(item.key)}
                       >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
-                      >
-                        Kanban
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
-                      >
-                        Calendar
-                      </a>
-                    </li>
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button
-                  aria-controls="dropdown-sales"
-                  className="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  data-collapse-toggle="dropdown-sales"
-                  type="button"
-                  onClick={toggleDropdownSales}
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clipRule="evenodd"
-                      d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                      fillRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
-                    Sales
-                  </span>
-                  <svg
-                    aria-hidden="true"
-                    className={`w-6 h-6 transition-transform ${
-                      isDropdownSalesOpen ? 'rotate-180' : ''
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clipRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      fillRule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-                {isDropdownSalesOpen && (
-                  <ul className="py-2 space-y-2" id="dropdown-sales">
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
-                      >
-                        Products
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
-                      >
-                        Billing
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        href="#"
-                      >
-                        Invoice
-                      </a>
-                    </li>
-                  </ul>
-                )}
-              </li>
+                        <span className="flex-1 ml-2 text-left whitespace-nowrap">
+                          {item.title}
+                        </span>
+                        <svg
+                          aria-hidden="true"
+                          className={`w-6 h-6 transition-transform ${
+                            dropdowns[item.key] ? 'rotate-180' : ''
+                          }`}
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            clipRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            fillRule="evenodd"
+                          ></path>
+                        </svg>
+                      </button>
+                      {dropdowns[item.key] &&
+                        renderSubMenu(item.path, item.subMenu)}
+                    </>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </aside>
@@ -241,6 +234,8 @@ const Navigation = ({ onLogout }) => {
 };
 
 Navigation.propTypes = {
+  isSidebarOpen: PropTypes.bool.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
   onLogout: PropTypes.func.isRequired,
 };
 
