@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactList from '../../components/Contact/ContactList';
+import ContactList from 'components/Contact/ContactList';
 
 const ContactContainer = () => {
   return (
