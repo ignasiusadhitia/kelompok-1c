@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import ContactDetail from './ContactDetail';
 
 const ContactList = () => {
@@ -7,7 +8,7 @@ const ContactList = () => {
 
   // Fungsi untuk membuka dan menutup modal
   const toggleModal = () => {
-    console.log("Tombol close diklik");
+    console.log('Tombol close diklik');
     setIsModalOpen(!isModalOpen);
   };
 
@@ -65,9 +66,6 @@ const ContactList = () => {
                   <th className="px-4 py-3" scope="col">
                     message
                   </th>
-                  <th className="px-4 py-3" scope="col">
-                    <span className="sr-only">Actions</span>
-                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -84,8 +82,8 @@ const ContactList = () => {
                   <td className="px-4 py-3 flex items-center justify-end">
                     <button
                       className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                      onClick={toggleModal} // Mengaktifkan modal saat tombol ini diklik
                       type="button"
+                      onClick={toggleModal} // Mengaktifkan modal saat tombol ini diklik
                     >
                       <svg
                         className="feather feather-info"
