@@ -9,7 +9,7 @@ import LoginPage from 'pages/Auth/LoginPage';
 import RegisterPage from 'pages/Auth/RegisterPage';
 import ExpertisePage from 'pages/ExpertisePage';
 import OverviewPage from 'pages/OverviewPage';
-import PortfolioPage from 'pages/PortfolioPage';
+import PortfolioPage from 'pages/Portfolio/PortfolioPage';
 import SubscribePage from 'pages/SubscribePage';
 import TeamPage from 'pages/TeamPage';
 import TestimonialPage from 'pages/TestimonialPage';
@@ -20,10 +20,13 @@ import ArticleFormPage from './pages/ArticleFormPage';
 import ArticlePage from './pages/ArticlePage';
 import ContactPage from './pages/ContactPage';
 import ExpertiseFormPage from './pages/ExpertiseFormPage';
-import PortfolioFormPage from './pages/PortfolioFormPage';
+import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
+import EditPortfolioFormPage from 'pages/Portfolio/EditPortfolioFormPage';
 import TeamFormPage from './pages/TeamFormPage';
 import TestimonialFormPage from './pages/TestimonialFormPage';
 import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
+
+import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
 
 const App = () => {
   return (
@@ -66,12 +69,13 @@ const App = () => {
               path="/dashboard/expertise/edit/:id"
             />
             <Route element={<PortfolioPage />} path="/dashboard/portfolio" />
+            <Route element={<PortfolioDetailPage />} path="/dashboard/portfolio/:id" />
             <Route
-              element={<PortfolioFormPage />}
+              element={<AddPortfolioFormPage />}
               path="/dashboard/portfolio/add"
             />
             <Route
-              element={<PortfolioFormPage />}
+              element={<EditPortfolioFormPage />}
               path="/dashboard/portfolio/edit/:id"
             />
             <Route element={<SubscribePage />} path="/dashboard/subscribe" />
@@ -104,6 +108,7 @@ const App = () => {
 
         {/* Fallback */}
         <Route element={<LoginPage />} path="*" />
+
       </Routes>
     </Router>
   );
