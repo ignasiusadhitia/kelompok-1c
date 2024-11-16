@@ -30,7 +30,7 @@ import PortfolioDetailPage from './pages/Portfolio/PortfolioDetailPage';
 
 const App = () => {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         {/* Public Routes */}
         <Route element={<LoginPage />} path="/" />
@@ -88,11 +88,11 @@ const App = () => {
             />
             <Route
               element={<TestimonialFormPage />}
-              path="/dashboard/testimonial/add"
+              path="/dashboard/testimonials/add"
             />
             <Route
               element={<TestimonialFormPage />}
-              path="/dashboard/testimonial/edit/:id"
+              path="/dashboard/testimonials/edit/:id"
             />
             <Route element={<WhatWeDoPage />} path="/dashboard/what-we-do" />
             <Route
