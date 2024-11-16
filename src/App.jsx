@@ -16,6 +16,10 @@ import TeamDashboardPage from './pages/TeamDashboardPage';
 import TestimonialDashboardPage from './pages/TestimonialDashboardPage';
 import WhatWeDoDashboardPage from './pages/WhatWeDoDashboardPage';
 
+import AddPortfolioContainer from './containers/Portfolio/AddPortfolioContainer';
+import EditPortfolioContainer from './containers/Portfolio/EditPortfolioContainer';
+import PortfolioDetail from './components/Portfolio/PortfolioDetail';
+
 const App = () => {
   return (
     <Router>
@@ -35,6 +39,11 @@ const App = () => {
         <Route element={<WhatWeDoDashboardPage />} path="/testimonials" />
         <Route element={<ProtectedRoute />}></Route>
         <Route element={<LoginPage />} path="*" />
+
+        // Routes for Portfolio
+        <Route element={<AddPortfolioContainer/>} path="/portfolio/add-data" />
+        <Route element={<EditPortfolioContainer />} path="/portfolio/edit-data/:id" />
+        <Route element={<PortfolioDetail />} path="/portfolio/:id" />
       </Routes>
     </Router>
   );
