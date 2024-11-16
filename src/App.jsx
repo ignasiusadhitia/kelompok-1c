@@ -84,11 +84,11 @@ const App = () => {
             />
             <Route
               element={<TestimonialFormPage />}
-              path="/dashboard/testimonial/add"
+              path="/dashboard/testimonials/add"
             />
             <Route
               element={<TestimonialFormPage />}
-              path="/dashboard/testimonial/edit/:id"
+              path="/dashboard/testimonials/edit/:id"
             />
             <Route element={<WhatWeDoPage />} path="/dashboard/what-we-do" />
             <Route
