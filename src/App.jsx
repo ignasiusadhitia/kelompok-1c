@@ -26,7 +26,7 @@ import TeamFormPage from './pages/TeamFormPage';
 import TestimonialFormPage from './pages/TestimonialFormPage';
 import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
 
-import PortfolioDetailPage from './pages/Portfolio/PortfolioDetailPage';
+import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
 
 const App = () => {
   return (
