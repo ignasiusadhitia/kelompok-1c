@@ -1,5 +1,5 @@
 import React from 'react';
-import SubscribeContainer from '../containers/Subscribe/SubscribeContainer';
+import SubscribeContainer from 'containers/Subscribe/SubscribeContainer';
 
 const SubscribePage = () => {
   return (

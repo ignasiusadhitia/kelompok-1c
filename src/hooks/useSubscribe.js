@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import subscribeService from '../api/services/subscribeService';
+import subscribeService from 'api/services/subscribeService';
 
 const useSubscribe = () => {
   const [Subscribes, setSubscribes] = useState([]);
