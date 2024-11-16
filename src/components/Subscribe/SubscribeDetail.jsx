@@ -9,7 +9,7 @@ const ContactDetail = ({ contact, onClose }) => {
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-800">
           <div className="pt-3 pb-3 flex items-center justify-between border-b rounded-t dark:border-gray-600 ps-2 pe-2">
             <h3 className="text-lg font-normal text-gray-500 dark:text-gray-400">
-              Contact Details
+              Subscribe Details
             </h3>
             <button
               className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
