@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ContactDetail from './ContactDetail';
 
 const ContactList = () => {
+  // State untuk mengontrol modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Fungsi untuk membuka dan menutup modal
+  const toggleModal = () => {
+    console.log("Tombol close diklik");
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
       <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
         {/* Start coding here */}
-
         <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
             <div className="w-full md:w-1/2">
@@ -75,9 +84,7 @@ const ContactList = () => {
                   <td className="px-4 py-3 flex items-center justify-end">
                     <button
                       className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                      data-modal-target="readProductModal"
-                      data-modal-toggle="readProductModal"
-                      id="readProductButton"
+                      onClick={toggleModal} // Mengaktifkan modal saat tombol ini diklik
                       type="button"
                     >
                       <svg
@@ -102,6 +109,8 @@ const ContactList = () => {
               </tbody>
             </table>
           </div>
+          {/* Modal yang diaktifkan oleh state */}
+          {isModalOpen && <ContactDetail onClose={toggleModal} />}
           <nav
             aria-label="Table navigation"
             className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
