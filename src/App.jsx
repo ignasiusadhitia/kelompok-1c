@@ -12,7 +12,7 @@ import OverviewPage from 'pages/OverviewPage';
 import PortfolioPage from 'pages/Portfolio/PortfolioPage';
 import SubscribePage from 'pages/SubscribePage';
 import TeamPage from 'pages/TeamPage';
-import TestimonialPage from 'pages/TestimonialPage';
+import TestimonialPage from 'pages/Testimonial/TestimonialPage';
 import WhatWeDoPage from 'pages/WhatWeDoPage';
 
 import AboutUsFormPage from './pages/AboutUsFormPage';
@@ -23,7 +23,8 @@ import ExpertiseFormPage from './pages/ExpertiseFormPage';
 import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
 import EditPortfolioFormPage from 'pages/Portfolio/EditPortfolioFormPage';
 import TeamFormPage from './pages/TeamFormPage';
-import TestimonialFormPage from './pages/TestimonialFormPage';
+import TestimonialFormPage from './pages/Testimonial/TestimonialFormPage';
+import TestimonialDetailPage from 'pages/Testimonial/TestimonialDetailPage';
 import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
 
 import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
@@ -93,6 +94,10 @@ const App = () => {
             <Route
               element={<TestimonialFormPage />}
               path="/dashboard/testimonials/edit/:id"
+            />
+            <Route
+              element={<TestimonialDetailPage />}
+              path="/dashboard/testimonials/:id"
             />
             <Route element={<WhatWeDoPage />} path="/dashboard/what-we-do" />
             <Route
