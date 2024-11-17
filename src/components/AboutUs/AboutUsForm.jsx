@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAddData from '../../hooks/useAddData';
-import useUpdateData from '../../hooks/useUpdateData';
+import useAddData from 'hooks/useAddData';
+import useUpdateData from 'hooks/useUpdateData';
 
 const AboutUsForm = ({ isEdit, data }) => {
   const navigate = useNavigate();
