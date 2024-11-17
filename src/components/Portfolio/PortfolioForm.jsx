@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+
 import useAddData from '../../hooks/useAddData';
 import useUpdateData from '../../hooks/useUpdateData';
 
@@ -20,12 +22,14 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
       [name]: name === 'image' ? files[0] : value,
     }));
   };
- 
+
   // use custom hooks for add data
   const { addData, loading: addLoading } = useAddData('/api/portfolio');
 
   //use custom hooks for edit data
-  const { updateData, loading: updateLoading } = useUpdateData(`/api/portfolio/${portfolio.id}`);
+  const { updateData, loading: updateLoading } = useUpdateData(
+    `/api/portfolio/${portfolio.id}`
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,88 +66,88 @@ const PortfolioForm = ({ isEdit, portfolio }) => {
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <div className="sm:col-span-2">
               <label
-                htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="name"
               >
                 Thumbnail Image
               </label>
               <input
-                type="file"
                 accept=".jpg, .png, .jpeg, .webp"
-                name="image"
-                onChange={handleChange}
-                id="image"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                id="image"
+                name="image"
+                type="file"
+                onChange={handleChange}
               />
             </div>
             <div className="sm:col-span-2">
               <label
-                htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="name"
               >
                 Title
               </label>
               <input
-                type="text"
+                required
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                id="title"
                 name="title"
+                placeholder="Type product name"
+                type="text"
                 value={formData.title}
                 onChange={handleChange}
-                id="title"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Type product name"
-                required
               />
             </div>
             <div className="sm:col-span-2">
               <label
-                htmlFor="date"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="date"
               >
                 Date
               </label>
               <input
-                type="date"
+                required
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                id="date"
                 name="date"
+                type="date"
                 value={formData.date}
                 onChange={handleChange}
-                id="date"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                required
               />
             </div>
             <div className="sm:col-span-2">
               <label
-                htmlFor="content"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="content"
               >
                 Description
               </label>
               <textarea
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 id="content"
                 name="content"
+                placeholder="Your content here"
+                rows="8"
                 value={formData.content}
                 onChange={handleChange}
-                rows="8"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Your content here"
               ></textarea>
             </div>
           </div>
           <div className="flex justify-end">
             <button
-              onClick={() => navigate(-1)}
               className="mt-4 flex items-center justify-center px-5 py-2.5 mt-4 text-sm font-medium text-red-600 border-2 border-red-600 mr-2 rounded-lg hover:bg-red-700 hover:text-white"
+              onClick={() => navigate(-1)}
             >
               Cancel
             </button>
             <button
-              type="submit"
               className={`flex items-center justify-center px-5 py-2.5 mt-4 text-sm font-medium text-white rounded-lg ${
                 addLoading || updateLoading
                   ? 'bg-blue-400 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700'
               }`}
               disabled={addLoading || updateLoading}
+              type="submit"
             >
               {addLoading || updateLoading ? (
                 <div className="flex items-center">

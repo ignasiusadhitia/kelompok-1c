@@ -16,7 +16,10 @@ const contactService = async () => {
     return response.data;
   } catch (error) {
     // Log detail error dari server
-    console.error('Error fetching contact messages:', error.response?.data || error.message);
+    console.error(
+      'Error fetching contact messages:',
+      error.response?.data || error.message
+    );
     throw new Error(error.response?.data?.message || error.message);
   }
 };

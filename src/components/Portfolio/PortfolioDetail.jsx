@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const PortfolioDetail = () => {
@@ -21,9 +22,9 @@ const PortfolioDetail = () => {
           </h2>
           <div className="my-8 xl:mb-16 xl:mt-12 flex justify-center">
             <img
+              alt={portfolio.title}
               className="w-96 dark:hidden"
               src={portfolio.imageUrl}
-              alt={portfolio.title}
             />
           </div>
           <div className="mx-auto max-w-2xl space-y-6">

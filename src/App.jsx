@@ -4,29 +4,28 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import ProtectedRoute from 'components/Shared/ProtectedRoute';
 import DashboardLayout from 'layouts/DashboardLayout';
+import AboutUsFormPage from 'pages/AboutUsFormPage';
 import AboutUsPage from 'pages/AboutUsPage';
+import ArticleFormPage from 'pages/ArticleFormPage';
+import ArticlePage from 'pages/ArticlePage';
 import LoginPage from 'pages/Auth/LoginPage';
 import RegisterPage from 'pages/Auth/RegisterPage';
+import ContactPage from 'pages/ContactPage';
+import ExpertiseFormPage from 'pages/ExpertiseFormPage';
 import ExpertisePage from 'pages/ExpertisePage';
 import OverviewPage from 'pages/OverviewPage';
-import PortfolioPage from 'pages/Portfolio/PortfolioPage';
-import SubscribePage from 'pages/SubscribePage';
-import TeamPage from 'pages/TeamPage';
-import TestimonialPage from 'pages/TestimonialPage';
-import WhatWeDoPage from 'pages/WhatWeDoPage';
-
-import AboutUsFormPage from './pages/AboutUsFormPage';
-import ArticleFormPage from './pages/ArticleFormPage';
-import ArticlePage from './pages/ArticlePage';
-import ContactPage from './pages/ContactPage';
-import ExpertiseFormPage from './pages/ExpertiseFormPage';
 import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
 import EditPortfolioFormPage from 'pages/Portfolio/EditPortfolioFormPage';
-import TeamFormPage from './pages/TeamFormPage';
-import TestimonialFormPage from './pages/TestimonialFormPage';
-import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
-
 import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
+import PortfolioPage from 'pages/Portfolio/PortfolioPage';
+import SubscribePage from 'pages/SubscribePage';
+import TeamAddFormPage from 'pages/TeamAddFormPage';
+import TeamEditFormPage from 'pages/TeamEditFormPage';
+import TeamPage from 'pages/TeamPage';
+import TestimonialFormPage from 'pages/TestimonialFormPage';
+import TestimonialPage from 'pages/TestimonialPage';
+import WhatWeDoFormPage from 'pages/WhatWeDoFormPage';
+import WhatWeDoPage from 'pages/WhatWeDoPage';
 
 const App = () => {
   return (
@@ -69,7 +68,10 @@ const App = () => {
               path="/dashboard/expertise/edit/:id"
             />
             <Route element={<PortfolioPage />} path="/dashboard/portfolio" />
-            <Route element={<PortfolioDetailPage />} path="/dashboard/portfolio/:id" />
+            <Route
+              element={<PortfolioDetailPage />}
+              path="/dashboard/portfolio/:id"
+            />
             <Route
               element={<AddPortfolioFormPage />}
               path="/dashboard/portfolio/add"
@@ -80,8 +82,11 @@ const App = () => {
             />
             <Route element={<SubscribePage />} path="/dashboard/subscribe" />
             <Route element={<TeamPage />} path="/dashboard/team" />
-            <Route element={<TeamFormPage />} path="/dashboard/team/add" />
-            <Route element={<TeamFormPage />} path="/dashboard/team/edit/:id" />
+            <Route element={<TeamAddFormPage />} path="/dashboard/team/add" />
+            <Route
+              element={<TeamEditFormPage />}
+              path="/dashboard/team/edit/:id"
+            />
             <Route
               element={<TestimonialPage />}
               path="/dashboard/testimonials"
@@ -108,7 +113,6 @@ const App = () => {
 
         {/* Fallback */}
         <Route element={<LoginPage />} path="*" />
-
       </Routes>
     </Router>
   );

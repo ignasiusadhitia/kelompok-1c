@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import useSubscribe from 'hooks/useSubscribe';
+
 import SubscribeDetail from './SubscribeDetail';
 
 const SubscribeListItem = () => {
@@ -17,7 +19,7 @@ const SubscribeListItem = () => {
   };
 
   if (loading) return <p>Loading subscribe...</p>;
-  if (error) return
+  if (error) return;
   <p>Error: {error}</p>;
 
   return (
@@ -40,18 +42,18 @@ const SubscribeListItem = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fillRule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                         clipRule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        fillRule="evenodd"
                       />
                     </svg>
                   </div>
                   <input
-                    type="text"
-                    id="simple-search"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    id="simple-search"
                     placeholder="Search"
                     required=""
+                    type="text"
                   />
                 </div>
               </form>
@@ -66,8 +68,10 @@ const SubscribeListItem = () => {
               </thead>
               <tbody>
                 {Subscribes.map((subscribe) => (
-                  <tr key={subscribe.id} className="border-b dark:border-gray-700">
-                    
+                  <tr
+                    key={subscribe.id}
+                    className="border-b dark:border-gray-700"
+                  >
                     <td className="px-4 py-3">{subscribe.email}</td>
                     <td className="px-4 py-3 flex items-center justify-center">
                       <button
@@ -100,7 +104,10 @@ const SubscribeListItem = () => {
           </div>
           {/* Modal yang diaktifkan oleh state */}
           {isModalOpen && (
-            <SubscribeDetail contact={selectedSubscribe} onClose={toggleModal} />
+            <SubscribeDetail
+              contact={selectedSubscribe}
+              onClose={toggleModal}
+            />
           )}
         </div>
       </div>

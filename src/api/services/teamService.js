@@ -8,7 +8,7 @@ const teamService = {
     return response.data;
   },
 
-  read: async () => {
+  getAll: async () => {
     const response = await axios.get('/api/team');
     return response.data;
   },

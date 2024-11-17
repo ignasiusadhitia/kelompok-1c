@@ -1,12 +1,18 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
+
 import PortfolioList from 'components/Portfolio/PortfolioList';
 import useFetchData from 'hooks/useFetchData';
 
 const PortfolioContainer = () => {
-
   //Fetch Portfolio Data
-  const { data: portfolios, loading, error, fetchData: fetchPortfolios } = useFetchData('/api/portfolio');
+  const {
+    data: portfolios,
+    loading,
+    error,
+    fetchData: fetchPortfolios,
+  } = useFetchData('/api/portfolio');
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -20,8 +26,8 @@ const PortfolioContainer = () => {
             </div>
             <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
               <Link
-                to="/dashboard/portfolio/add"
                 className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                to="/dashboard/portfolio/add"
               >
                 <svg
                   aria-hidden="true"
@@ -41,10 +47,10 @@ const PortfolioContainer = () => {
             </div>
           </div>
           <PortfolioList
-            portfolios={portfolios}
-            loading={loading}
             error={error}
             fetchPortfolios={fetchPortfolios}
+            loading={loading}
+            portfolios={portfolios}
           />
         </div>
       </div>

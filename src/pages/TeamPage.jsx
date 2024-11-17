@@ -1,7 +1,9 @@
 import React from 'react';
 
+import TeamListContainer from 'containers/Team/TeamListContainer';
+
 const TeamPage = () => {
-  return <div>TeamPage</div>;
+  return <TeamListContainer />;
 };
 
 export default TeamPage;

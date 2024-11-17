@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_BASE_URL;
@@ -7,7 +8,6 @@ const authToken = localStorage.getItem('token');
 const useAddData = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
 
   const addData = async (data, onSuccess) => {
     try {

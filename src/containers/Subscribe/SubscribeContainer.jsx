@@ -1,10 +1,9 @@
 import React from 'react';
+
 import SubscribeListItem from 'components/Subscribe/SubscribeListItem';
 
 const SubscribeContainer = () => {
-  return (
-    <SubscribeListItem/>
-  )
+  return <SubscribeListItem />;
 };
 
 export default SubscribeContainer;
