@@ -4,10 +4,9 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import ProtectedRoute from 'components/Shared/ProtectedRoute';
 import DashboardLayout from 'layouts/DashboardLayout';
-import AboutUsFormPage from 'pages/AboutUsFormPage';
-import AboutUsPage from 'pages/AboutUsPage';
-import ArticleFormPage from 'pages/ArticleFormPage';
-import ArticlePage from 'pages/ArticlePage';
+
+import AboutUsPage from 'pages/AboutUs/AboutUsPage';
+
 import LoginPage from 'pages/Auth/LoginPage';
 import RegisterPage from 'pages/Auth/RegisterPage';
 import ContactPage from 'pages/ContactPage';
@@ -27,6 +26,22 @@ import TestimonialPage from 'pages/TestimonialPage';
 import WhatWeDoFormPage from 'pages/WhatWeDoFormPage';
 import WhatWeDoPage from 'pages/WhatWeDoPage';
 
+
+import AddAboutUsFormPage from 'pages/AboutUs/AddAboutUsFormPage';
+import EditAboutUsFormPage from 'pages/AboutUs/EditPortfolioFormPage';
+import ArticleFormPage from './pages/ArticleFormPage';
+import ArticlePage from './pages/ArticlePage';
+import ContactPage from './pages/ContactPage';
+import ExpertiseFormPage from './pages/ExpertiseFormPage';
+import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
+import EditPortfolioFormPage from 'pages/Portfolio/EditPortfolioFormPage';
+import TeamFormPage from './pages/TeamFormPage';
+import TestimonialFormPage from './pages/TestimonialFormPage';
+import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
+
+import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
+
+
 const App = () => {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -41,12 +56,12 @@ const App = () => {
             <Route element={<OverviewPage />} path="/dashboard" />
             <Route element={<AboutUsPage />} path="/dashboard/about-us" />
             <Route
-              element={<AboutUsFormPage />}
+              element={<AddAboutUsFormPage />}
               path="/dashboard/about-us/add"
             />
             <Route
-              element={<AboutUsFormPage />}
-              path="/dashboard/about-us/edit/:id"
+              element={<EditAboutUsFormPage />}
+              path="/dashboard/about-us/edit"
             />
             <Route element={<ArticlePage />} path="/dashboard/articles" />
             <Route
