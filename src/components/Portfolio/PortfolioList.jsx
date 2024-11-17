@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PortfolioListItem from './PortfolioListItem';
 
 const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
@@ -24,7 +25,7 @@ const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
         <tbody>
           {loading && (
             <tr>
-              <td colSpan="100%" className="text-center">
+              <td className="text-center" colSpan="100%">
                 <div className="flex items-center justify-center">
                   <div className="w-5 h-5 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mr-2"></div>
                   Loading...
@@ -35,7 +36,7 @@ const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
 
           {!loading && error && (
             <tr>
-              <td colSpan="100%" className="text-center text-danger">
+              <td className="text-center text-danger" colSpan="100%">
                 {error}
               </td>
             </tr>
@@ -43,7 +44,7 @@ const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
 
           {!loading && error === null && portfolios.length === 0 && (
             <tr>
-              <td colSpan="100%" className="text-center">
+              <td className="text-center" colSpan="100%">
                 No data found
               </td>
             </tr>
@@ -51,9 +52,9 @@ const PortfolioList = ({ portfolios, loading, error, fetchPortfolios }) => {
 
           {portfolios.map((portfolio) => (
             <PortfolioListItem
-              portfolio={portfolio}
               key={portfolio.id}
               fetchPortfolios={fetchPortfolios}
+              portfolio={portfolio}
             />
           ))}
         </tbody>

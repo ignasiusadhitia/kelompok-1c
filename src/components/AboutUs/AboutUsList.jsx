@@ -18,7 +18,7 @@ const AboutUsList = ({ data, loading, error }) => {
 
       {!loading && error === null && Object.keys(data).length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <img src={data.imageUrl} alt={data.title} className="w-96 mx-auto" />
+          <img alt={data.title} className="w-96 mx-auto" src={data.imageUrl} />
           <div className="mt-2 lg:mt-0">
             <h1 className="text-2xl font-extrabold mb-3 text-center lg:text-start">
               {data.title}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+
 import useDeleteData from '../../hooks/useDeleteData';
 
 const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
@@ -11,7 +13,7 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
       state: portfolio,
     });
   };
-  
+
   const handleNavigationToEdit = () => {
     navigate(`/dashboard/portfolio/edit/${portfolio.id}`, {
       state: portfolio,
@@ -22,7 +24,7 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
   const { deleteData, loading } = useDeleteData();
 
   const handleDelete = (id) => {
-    deleteData(`/api/portfolio/${id}`, fetchPortfolios)
+    deleteData(`/api/portfolio/${id}`, fetchPortfolios);
   };
 
   return (
@@ -47,10 +49,10 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
           </svg>
         </button>
         <div
-          onMouseDown={(e) => e.preventDefault()}
           className={`${
             isOpen ? 'block' : 'hidden'
           } absolute right-0 bottom-10 z-20 w-44 bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
+          onMouseDown={(e) => e.preventDefault()}
         >
           <ul
             aria-labelledby="apple-imac-27-dropdown-button"
@@ -78,8 +80,8 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
               className={`${
                 loading ? 'cursor-not-allowed' : 'cursor-pointer'
               } w-full text-start py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white`}
-              onClick={() => handleDelete(portfolio.id)}
               disabled={loading}
+              onClick={() => handleDelete(portfolio.id)}
             >
               Delete
             </button>
@@ -91,4 +93,3 @@ const PortfolioListItem = ({ portfolio, fetchPortfolios }) => {
 };
 
 export default PortfolioListItem;
-
