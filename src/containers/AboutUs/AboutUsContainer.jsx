@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useFetchData from '../../hooks/useFetchData';
-import AboutUsList from '../../components/AboutUs/AboutUsList';
+import useFetchData from 'hooks/useFetchData';
+import AboutUsList from 'components/AboutUs/AboutUsList';
 
 const Button = ({ data }) => {
   const navigate = useNavigate();
