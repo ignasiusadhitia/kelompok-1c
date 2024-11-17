@@ -15,7 +15,7 @@ import TeamPage from 'pages/TeamPage';
 import TestimonialPage from 'pages/TestimonialPage';
 import WhatWeDoPage from 'pages/WhatWeDoPage';
 
-import AddAboutUsFormPage from './pages/AboutUs/AddAboutUsFormPage';
+import AddAboutUsFormPage from 'pages/AboutUs/AddAboutUsFormPage';
 import EditAboutUsFormPage from './pages/AboutUs/EditPortfolioFormPage';
 import ArticleFormPage from './pages/ArticleFormPage';
 import ArticlePage from './pages/ArticlePage';
