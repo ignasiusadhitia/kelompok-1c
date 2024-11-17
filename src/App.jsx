@@ -4,8 +4,9 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import ProtectedRoute from 'components/Shared/ProtectedRoute';
 import DashboardLayout from 'layouts/DashboardLayout';
-import AboutUsFormPage from 'pages/AboutUsFormPage';
-import AboutUsPage from 'pages/AboutUsPage';
+import AboutUsPage from 'pages/AboutUs/AboutUsPage';
+import AddAboutUsFormPage from 'pages/AboutUs/AddAboutUsFormPage';
+import EditAboutUsFormPage from 'pages/AboutUs/EditPortfolioFormPage';
 import ArticleFormPage from 'pages/ArticleFormPage';
 import ArticlePage from 'pages/ArticlePage';
 import LoginPage from 'pages/Auth/LoginPage';
@@ -41,12 +42,12 @@ const App = () => {
             <Route element={<OverviewPage />} path="/dashboard" />
             <Route element={<AboutUsPage />} path="/dashboard/about-us" />
             <Route
-              element={<AboutUsFormPage />}
+              element={<AddAboutUsFormPage />}
               path="/dashboard/about-us/add"
             />
             <Route
-              element={<AboutUsFormPage />}
-              path="/dashboard/about-us/edit/:id"
+              element={<EditAboutUsFormPage />}
+              path="/dashboard/about-us/edit"
             />
             <Route element={<ArticlePage />} path="/dashboard/articles" />
             <Route
