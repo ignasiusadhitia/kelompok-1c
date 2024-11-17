@@ -17,8 +17,9 @@ import WhatWeDoPage from 'pages/WhatWeDoPage';
 
 import AddAboutUsFormPage from './pages/AboutUs/AddAboutUsFormPage';
 import EditAboutUsFormPage from './pages/AboutUs/EditPortfolioFormPage';
-import ArticleFormPage from './pages/ArticleFormPage';
-import ArticlePage from './pages/ArticlePage';
+import AddArticleFormPage from './pages/Article/AddArticleFormPage';
+import EditArticleFormPage from './pages/Article/EditArticleFormPage';
+import ArticlePage from './pages/Article/ArticlePage';
 import ContactPage from './pages/ContactPage';
 import ExpertiseFormPage from './pages/ExpertiseFormPage';
 import AddPortfolioFormPage from 'pages/Portfolio/AddPortfolioFormPage';
@@ -27,6 +28,7 @@ import TeamFormPage from './pages/TeamFormPage';
 import TestimonialFormPage from './pages/TestimonialFormPage';
 import WhatWeDoFormPage from './pages/WhatWeDoFormPage';
 
+import ArticleDetailPage from 'pages/Article/ArticleDetailPage';
 import PortfolioDetailPage from 'pages/Portfolio/PortfolioDetailPage';
 
 const App = () => {
@@ -51,12 +53,13 @@ const App = () => {
               path="/dashboard/about-us/edit"
             />
             <Route element={<ArticlePage />} path="/dashboard/articles" />
+            <Route element={<ArticleDetailPage />} path="/dashboard/articles/:id" />
             <Route
-              element={<ArticleFormPage />}
+              element={<AddArticleFormPage />}
               path="/dashboard/articles/add"
             />
             <Route
-              element={<ArticleFormPage />}
+              element={<EditArticleFormPage />}
               path="/dashboard/articles/edit/:id"
             />
             <Route element={<ContactPage />} path="/dashboard/contact" />
