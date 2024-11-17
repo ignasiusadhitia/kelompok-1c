@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import teamService from 'api/services/teamService';
-
-import TeamList from '../../components/Team/TeamList';
+import TeamList from 'components/Team/TeamList';
 
 const TeamListContainer = () => {
   const [team, setTeam] = useState([]);

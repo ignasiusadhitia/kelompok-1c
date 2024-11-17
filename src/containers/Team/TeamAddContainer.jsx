@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import teamService from 'api/services/teamService';
-
-import TeamForm from '../../components/Team/TeamForm';
+import TeamForm from 'components/Team/TeamForm';
 
 const TeamAddContainer = () => {
   const [formData, setFormData] = useState({ name: '', title: '' });
